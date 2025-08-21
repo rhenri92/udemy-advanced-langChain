@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 template = """Based on the table schema below, write a SQL query that would answer the user's question:
 {schema}
 
-Important: ONLY provide the query, nothing else:
+Important: ONLY provide the query (no markdown), nothing else:
 
 Example:
 Table Name: Customers

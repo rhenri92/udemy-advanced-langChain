@@ -45,7 +45,7 @@ vectorstore = PGVector(
     use_jsonb=True,
 )
 
-retriever = store.as_retriever()
+retriever =  vectorstore.as_retriever()
 
 from langchain.prompts.prompt import PromptTemplate
 
@@ -98,9 +98,9 @@ async def lifespan(app: FastAPI):
         # separators=[\n\n", "\n", " ", ""]
     )
     chunks = text_splitter.split_documents(docs)
-    store.add_documents(chunks)
+    vectorstore.add_documents(chunks)
     yield
-    store.delete_collection()
+    vectorstore.delete_collection()
 
 
 app = FastAPI(lifespan=lifespan)
